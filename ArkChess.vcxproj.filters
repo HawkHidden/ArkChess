@@ -23,7 +23,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pawn.h">
+    <ClInclude Include="board.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="piece_images.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="move_logic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="move_pawn.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

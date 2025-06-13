@@ -127,7 +127,10 @@
     <ClCompile Include="pawn.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pawn.h" />
+    <ClInclude Include="board.h" />
+    <ClInclude Include="move_logic.h" />
+    <ClInclude Include="move_pawn.h" />
+    <ClInclude Include="piece_images.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
