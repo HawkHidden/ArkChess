@@ -123,14 +123,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="board.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="pawn.cpp" />
+    <ClCompile Include="move_bishop.cpp" />
+    <ClCompile Include="move_king.cpp" />
+    <ClCompile Include="move_knight.cpp" />
+    <ClCompile Include="move_logic.cpp" />
+    <ClCompile Include="move_pawn.cpp" />
+    <ClCompile Include="move_queen.cpp" />
+    <ClCompile Include="move_rook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h" />
+    <ClInclude Include="move_bishop.h" />
+    <ClInclude Include="move_king.h" />
+    <ClInclude Include="move_knight.h" />
     <ClInclude Include="move_logic.h" />
     <ClInclude Include="move_pawn.h" />
-    <ClInclude Include="piece_images.h" />
+    <ClInclude Include="move_queen.h" />
+    <ClInclude Include="move_rook.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
