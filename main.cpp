@@ -34,9 +34,9 @@ int checkVictory() {
             if (board[i][j] == KING_BLACK) blackKingAlive = true; // 找到黑王
         }
     }
-    if (!blackKingAlive) return 1; // 黑王消失 → 白胜
-    if (!whiteKingAlive) return 2; // 白王消失 → 黑胜
-    return 0;                      // 双王都在 → 对局继续
+    if (!blackKingAlive) return 1; // 黑王消失  白胜
+    if (!whiteKingAlive) return 2; // 白王消失  黑胜
+    return 0;                      // 双王都在  对局继续
 }
 // 函数：drawMessage
 // 作用：在窗口底部绘制一行提示文字
@@ -77,11 +77,9 @@ void drawHighlights() {
         }
     }
 }
-// ============================
 // 函数：drawCastlingButtons
 // 作用：在界面右侧绘制“短易位”和“长易位”两个按钮
 // 参数：isWhiteTurn 指示当前轮到白方还是黑方走棋
-// ============================
 void drawCastlingButtons(bool isWhiteTurn) {
     settextstyle(18, 0, _T("Consolas"));  // 设置字体：字号18，无旋转，Consolas字体随便选的
     setbkmode(TRANSPARENT);               // 文本背景模式：透明（不覆盖背景格子）
@@ -260,7 +258,7 @@ int main() {
                             // 播放落子音效
                             PlaySound(TEXT("move.wav"), NULL, SND_FILENAME | SND_ASYNC);
                             // 获取刚移动的棋子类型
-                            int movedPiece = board[y][x];
+                            int movedPiece = board[y][x];                        
                             // 升变检测：如果走到对方底线且为兵，触发升变
                             if ((movedPiece == PAWN_WHITE && y == 0) ||
                                 (movedPiece == PAWN_BLACK && y == 7)) {
