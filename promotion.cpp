@@ -56,6 +56,7 @@ bool handlePromotionClick(int mouseX, int mouseY, bool& isWhiteTurn) {
             board[promotionY][promotionX] = options[i];
             showPromotion = false;
             promotionX = promotionY = -1;
+            PlaySound(TEXT("promotion.wav"), NULL, SND_FILENAME | SND_ASYNC);
 
             // 升变完成后换手
             isWhiteTurn = !isWhiteTurn;
