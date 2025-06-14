@@ -7,8 +7,8 @@
 const int CELL_SIZE = 64;
 const int ORIGIN_X = 50;
 const int ORIGIN_Y = 50;
-const int SCREEN_WIDTH = ORIGIN_X * 2 + CELL_SIZE * 8+100;
-const int SCREEN_HEIGHT = ORIGIN_Y * 2 + CELL_SIZE * 8 + 150; // 留出底下一行提示文字位置
+const int SCREEN_WIDTH = ORIGIN_X * 2 + CELL_SIZE * 8+200;
+const int SCREEN_HEIGHT = ORIGIN_Y * 2 + CELL_SIZE * 8 + 250; // 留出底下一行提示文字位置
 
 // 当前选中格子坐标（未选中为 -1）
 int selectedX = -1, selectedY = -1;
@@ -167,10 +167,12 @@ int main() {
         drawBoard();
         drawHighlights();
         drawMessage(message);
+        drawCastlingButtons(isWhiteTurn);
+        drawPromotionButtons(isWhiteTurn);
         FlushBatchDraw();
         // 每帧重绘棋盘与按钮
-        drawBoard();
-        drawCastlingButtons(isWhiteTurn);
+        
+
 
 
         // 事件处理
@@ -189,6 +191,12 @@ int main() {
                     selectedX = selectedY = -1; // 清除选中
                     continue; // 不进行普通走子处理
                 }
+				// 升变处理优先，如果点击了升变按钮
+                if (handlePromotionClick(msg.x, msg.y, isWhiteTurn)) {
+                    selectedX = selectedY = -1;
+                    continue;
+                }
+
                 if (x >= 0 && x < 8 && y >= 0 && y < 8) {
                     int piece = board[y][x];
                     bool isWhitePiece = piece >= PAWN_WHITE && piece <= KING_WHITE;
@@ -206,26 +214,35 @@ int main() {
                         if (canMove(board, selectedX, selectedY, x, y)) {
                             board[y][x] = board[selectedY][selectedX];
                             board[selectedY][selectedX] = EMPTY;
+                            int fromX = selectedX;
+                            int fromY = selectedY;
                             selectedX = selectedY = -1;
                             // 在成功移动后：
-                            if (checkAndHandlePromotion(x, y, isWhiteTurn)) {
-                                // 升变成功
-                                sprintf_s(message, "升变成功");
+                            int movedPiece = board[y][x];
+                            if ((movedPiece == PAWN_WHITE && y == 0) || (movedPiece == PAWN_BLACK && y == 7)) {
+                                showPromotion = true;
+                                promotionX = x;
+                                promotionY = y;
+                                continue; // 暂停换手，等待升变
                             }
+
+                            
                             isWhiteTurn = !isWhiteTurn;
                             int result = checkVictory();
+                            
+
                             // 如果是王
-                            if (piece == KING_WHITE)  hasMovedWhiteKing = true;
-                            if (piece == KING_BLACK)  hasMovedBlackKing = true;
+                            if (movedPiece == KING_WHITE)  hasMovedWhiteKing = true;
+                            if (movedPiece == KING_BLACK)  hasMovedBlackKing = true;
 
                             // 如果是车
-                            if (piece == ROOK_WHITE) {
-                                if (selectedX == 0 && selectedY == 7) hasMovedWhiteRookLeft = true;    // a1
-                                if (selectedX == 7 && selectedY == 7) hasMovedWhiteRookRight = true;   // h1
+                            if (movedPiece == ROOK_WHITE) {
+                                if (fromX == 0 && fromY == 7) hasMovedWhiteRookLeft = true;    // a1
+                                if (fromX == 7 && fromY == 7) hasMovedWhiteRookRight = true;   // h1
                             }
-                            if (piece == ROOK_BLACK) {
-                                if (selectedX == 0 && selectedY == 0) hasMovedBlackRookLeft = true;    // a8
-                                if (selectedX == 7 && selectedY == 0) hasMovedBlackRookRight = true;   // h8
+                            if (movedPiece == ROOK_BLACK) {
+                                if (fromX == 0 && fromY == 0) hasMovedBlackRookLeft = true;    // a8
+                                if (fromX == 7 && fromY == 0) hasMovedBlackRookRight = true;   // h8
                             }
 
                             if (result == 1) {
