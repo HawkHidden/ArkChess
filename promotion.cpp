@@ -68,9 +68,9 @@ bool handlePromotionClick(int mouseX, int mouseY, bool& isWhiteTurn) {
             showPromotion = false;
             promotionX = -1;
             promotionY = -1;
-            // 播放升变成功的提示音效（异步播放）
+            // 播放升变成功的提示音效
             PlaySound(TEXT("promotion.wav"), NULL, SND_FILENAME | SND_ASYNC);
-            // 升变完成后，切换走棋方（兵升变仍算本回合行动的一部分，现交给对方）
+            // 升变完成后，切换走棋方（兵升变仍算本回合行动的一部分，现在交给对方）
             isWhiteTurn = !isWhiteTurn;
             return true; // 表示本次点击已被处理
         }

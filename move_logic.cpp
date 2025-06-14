@@ -22,7 +22,7 @@ bool canMove(int board[8][8], int fromX, int fromY, int toX, int toY) {
     case ROOK_WHITE: case ROOK_BLACK:
         return canMoveRook(board, fromX, fromY, toX, toY);       // 车
     case BISHOP_WHITE: case BISHOP_BLACK:
-        return canMoveBishop(board, fromX, fromY, toX, toY);     // 象
+        return canMoveBishop(board, fromX, fromY, toX, toY);     // 
     case KNIGHT_WHITE: case KNIGHT_BLACK:
         return canMoveKnight(board, fromX, fromY, toX, toY);     // 马
     case QUEEN_WHITE: case QUEEN_BLACK:
@@ -32,7 +32,7 @@ bool canMove(int board[8][8], int fromX, int fromY, int toX, int toY) {
     case PAWN_WHITE: case PAWN_BLACK:
         return canMovePawn(board, fromX, fromY, toX, toY);       // 兵
     default:
-        return false;                                            // 非法棋子编号
+        return false;                                            // 非法
     }
 }
 
