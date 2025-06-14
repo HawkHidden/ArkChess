@@ -3,6 +3,9 @@
 #include "board.h"
 #include "move_logic.h"
 #include"promotion.h"
+#include <mmsystem.h>  // 用于 PlaySound 函数
+#pragma comment(lib, "winmm.lib")  // 链接 Windows 多媒体库
+
 
 const int CELL_SIZE = 64;
 const int ORIGIN_X = 50;
@@ -246,10 +249,12 @@ int main() {
                             }
 
                             if (result == 1) {
+                                PlaySound(_T("manout.wav"), NULL, SND_FILENAME | SND_ASYNC);
                                 MessageBox(GetHWnd(), _T("白方胜利！"), _T("游戏结束"), MB_OK | MB_ICONINFORMATION);
                                 break;
                             }
                             else if (result == 2) {
+                                PlaySound(_T("manout.wav"), NULL, SND_FILENAME | SND_ASYNC);
                                 MessageBox(GetHWnd(), _T("黑方胜利！"), _T("游戏结束"), MB_OK | MB_ICONINFORMATION);
                                 break;
                             }
