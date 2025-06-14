@@ -2,6 +2,7 @@
 #include <conio.h>
 #include "board.h"
 #include "move_logic.h"
+#include"promotion.h"
 
 const int CELL_SIZE = 64;
 const int ORIGIN_X = 50;
@@ -208,6 +209,11 @@ int main() {
                             selectedX = selectedY = -1;
                             isWhiteTurn = !isWhiteTurn;
                             int result = checkVictory();
+                            // 在成功移动后：
+                            if (checkAndHandlePromotion(x, y, isWhiteTurn)) {
+                                // 升变成功，提示信息（可选）
+                            }
+
                             // 如果是王
                             if (piece == KING_WHITE)  hasMovedWhiteKing = true;
                             if (piece == KING_BLACK)  hasMovedBlackKing = true;

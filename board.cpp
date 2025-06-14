@@ -69,7 +69,7 @@ void loadPieceImages() {
 // 释放贴图资源
 void releasePieceImages() {
     for (int i = 0; i < 13; i++) {
-        // EasyX 无需显式释放 IMAGE，空实现留作接口扩展
+        //其实不需要
     }
 }
 

@@ -132,6 +132,7 @@
     <ClCompile Include="move_pawn.cpp" />
     <ClCompile Include="move_queen.cpp" />
     <ClCompile Include="move_rook.cpp" />
+    <ClCompile Include="promotion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="move_pawn.h" />
     <ClInclude Include="move_queen.h" />
     <ClInclude Include="move_rook.h" />
+    <ClInclude Include="promotion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
