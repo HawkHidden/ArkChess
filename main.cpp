@@ -174,10 +174,6 @@ int main() {
         drawPromotionButtons(isWhiteTurn);
         FlushBatchDraw();
         // 每帧重绘棋盘与按钮
-        
-
-
-
         // 事件处理
         while (peekmessage(&msg, EM_MOUSE | EM_KEY)) {
             if (msg.message == WM_KEYDOWN && msg.vkcode == VK_ESCAPE) {
@@ -190,6 +186,7 @@ int main() {
                 int y = (msg.y - ORIGIN_Y) / CELL_SIZE;
                 // 优先判断是否点击了易位按钮
                 if (handleCastlingClick(msg.x, msg.y, isWhiteTurn)) {
+                    PlaySound(_T("crimson.wav"), NULL, SND_FILENAME | SND_ASYNC);
                     isWhiteTurn = !isWhiteTurn; // 成功易位后换手
                     selectedX = selectedY = -1; // 清除选中
                     continue; // 不进行普通走子处理
@@ -221,6 +218,7 @@ int main() {
                             int fromY = selectedY;
                             selectedX = selectedY = -1;
                             // 在成功移动后：
+                            PlaySound(TEXT("move.wav"), NULL, SND_FILENAME | SND_ASYNC);
                             int movedPiece = board[y][x];
                             if ((movedPiece == PAWN_WHITE && y == 0) || (movedPiece == PAWN_BLACK && y == 7)) {
                                 showPromotion = true;
