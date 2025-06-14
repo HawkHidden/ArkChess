@@ -15,7 +15,7 @@ const int BOARD_SIZE = 8;
 // 棋盘数组定义
 // 0 表示空格，其他值对应枚举的棋子类型
 extern int board[BOARD_SIZE][BOARD_SIZE];
-
+extern IMAGE pieceImages[13];
 // 初始化棋盘函数，设置初始棋子位置
 void initBoard();
 

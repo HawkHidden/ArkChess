@@ -207,13 +207,13 @@ int main() {
                             board[y][x] = board[selectedY][selectedX];
                             board[selectedY][selectedX] = EMPTY;
                             selectedX = selectedY = -1;
-                            isWhiteTurn = !isWhiteTurn;
-                            int result = checkVictory();
                             // 在成功移动后：
                             if (checkAndHandlePromotion(x, y, isWhiteTurn)) {
-                                // 升变成功，提示信息（可选）
+                                // 升变成功
+                                sprintf_s(message, "升变成功");
                             }
-
+                            isWhiteTurn = !isWhiteTurn;
+                            int result = checkVictory();
                             // 如果是王
                             if (piece == KING_WHITE)  hasMovedWhiteKing = true;
                             if (piece == KING_BLACK)  hasMovedBlackKing = true;
