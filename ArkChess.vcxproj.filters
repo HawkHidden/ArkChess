@@ -18,7 +18,31 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="pawn.cpp">
+    <ClCompile Include="board.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="move_bishop.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="move_king.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="move_knight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="move_logic.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="move_pawn.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="move_queen.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="move_rook.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="promotion.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,13 +50,28 @@
     <ClInclude Include="board.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="piece_images.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="move_logic.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="move_pawn.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="move_bishop.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="move_king.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="move_knight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="move_queen.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="move_rook.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="promotion.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
