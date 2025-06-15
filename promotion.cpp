@@ -1,5 +1,6 @@
 #include "promotion.h"       // 升变模块头文件，声明变量与函数接口
 #include <graphics.h>        // 引入 EasyX 图形库，用于绘制按钮和贴图
+#include <string>  // 添加此头文件以支持 std::string 和字符串转换
 // 升变模块全局变量
 // showPromotion: 标志当前是否处于升变选择状态
 //   true  -> 显示升变按钮，等待玩家点击
@@ -39,7 +40,9 @@ void drawPromotionButtons(bool isWhiteTurn) {
         putimage(BTN_X, top, &pieceImages[options[i]]);
     }
     // 绘制一个文字提示“升变选择”，位于按钮组上方
-    outtextxy(BTN_X, BTN_Y - 30, "升变选择");
+
+    // 修改 outtextxy 调用，使用 LPCWSTR 类型的宽字符字符串
+    outtextxy(BTN_X, BTN_Y - 30, TEXT("升变选择"));
 }
 // 函数：handlePromotionClick
 // 作用：检测鼠标点击是否在某一升变按钮上，若是则执行升变

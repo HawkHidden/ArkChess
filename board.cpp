@@ -1,5 +1,6 @@
 #include "board.h"           // 引入棋盘头文件，包含常量定义和棋盘相关函数声明
 #include <graphics.h>        // 引入 EasyX 图形库，用于图形绘制
+#include<tchar.h>
 // 模块一：棋盘数据结构
 // 定义棋盘数组，保存当前棋盘每个格子的棋子类型
 // board[i][j] 表示第 i 行 j 列上的棋子
@@ -45,22 +46,21 @@ void initBoard() {
 // 定义棋子贴图资源数组
 // 每个下标对应一个棋子类型，如 1=PAWN_WHITE，12=KING_BLACK
 IMAGE pieceImages[13]; // 共13种：包括空格子 + 6种棋子 × 2种颜色
-// 加载棋子贴图，加载的是 BMP 图片文件，按下标一一对应
 void loadPieceImages() {
-    const char* filenames[13] = {
-        "empty.bmp",        // 下标0，对应 EMPTY
-        "pawn_white.bmp",   // 下标1
-        "rook_white.bmp",
-        "knight_white.bmp",
-        "bishop_white.bmp",
-        "queen_white.bmp",
-        "king_white.bmp",   // 下标6
-        "pawn_black.bmp",   // 下标7
-        "rook_black.bmp",
-        "knight_black.bmp",
-        "bishop_black.bmp",
-        "queen_black.bmp",
-        "king_black.bmp"    // 下标12
+    const TCHAR* filenames[13] = {
+        _T("empty.bmp"),        // 下标0，对应 EMPTY
+        _T("pawn_white.bmp"),   // 下标1
+        _T("rook_white.bmp"),
+        _T("knight_white.bmp"),
+        _T("bishop_white.bmp"),
+        _T("queen_white.bmp"),
+        _T("king_white.bmp"),   // 下标6
+        _T("pawn_black.bmp"),   // 下标7
+        _T("rook_black.bmp"),
+        _T("knight_black.bmp"),
+        _T("bishop_black.bmp"),
+        _T("queen_black.bmp"),
+        _T("king_black.bmp")    // 下标12
     };
     for (int i = 0; i < 13; i++) {
         loadimage(&pieceImages[i], filenames[i]);  // EasyX 函数，加载指定 BMP 图片到图像对象中

@@ -42,13 +42,22 @@ int checkVictory() {
 // 作用：在窗口底部绘制一行提示文字
 // 参数：msg 为要显示的 C 字符串（const char*）
 void drawMessage(const char* msg) {
-    setfillcolor(WHITE);    // 背景填充色白
-    solidrectangle(0, SCREEN_HEIGHT - 40, SCREEN_WIDTH, SCREEN_HEIGHT); // 清空提示区
-    settextcolor(RED);      // 文本颜色红
-    setbkmode(TRANSPARENT); // 文本背景透明
-    outtextxy(ORIGIN_X, SCREEN_HEIGHT - 35, msg); // 在指定位置绘制文本
+    setfillcolor(WHITE);    // 背景填充色白  
+    solidrectangle(0, SCREEN_HEIGHT - 40, SCREEN_WIDTH, SCREEN_HEIGHT); // 清空提示区  
+    settextcolor(RED);      // 文本颜色红  
+    setbkmode(TRANSPARENT); // 文本背景透明  
+    //不懂
+    // 修复问题：将 msg 转换为 TCHAR 类型  
+    TCHAR tMsg[100];
+    _stprintf_s(tMsg, _T("%s"), msg);
+
+    outtextxy(ORIGIN_X, SCREEN_HEIGHT - 35, tMsg);
 }
 // 函数：drawHighlights
+    // 修复错误 E0020 和 C2065 的代码更新  
+    // 将 _T 宏用于字符串时，需要确保 msg 是一个字符串常量或 TCHAR 类型的变量  
+    // 如果 msg 是一个普通的 char*，需要将其转换为 TCHAR 类型  
+
 // 作用：绘制“选中格子”和“所有合法移动位置”的高亮
 void drawHighlights() {
     setlinecolor(RED); // 红色用来高亮当前选中格子
